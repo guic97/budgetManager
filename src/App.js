@@ -4,21 +4,23 @@ import Contact from './components/pages/Contact';
 import Company from './components/pages/Company';
 import NewProject from './components/pages/NewProject';
 
+import Container from "./components/layout/Container";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+
 function App() {
   return (
     <Router>
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/company">Company</Link>
-        <Link to="/newproject">NewProject</Link>
-      </div>
-      <Routes>
-        <Route exact path="/" element={<Home/>}></Route>
-        <Route path="/contact" element={<Contact/>}></Route>
-        <Route path="/company" element={<Company/>}></Route>
-        <Route path="/newproject" element={<NewProject/>}></Route>
-      </Routes>
+      <Navbar />
+      <Container customClass='min_height'>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/contact" element={<Contact/>}></Route>
+          <Route path="/company" element={<Company/>}></Route>
+          <Route path="/newproject" element={<NewProject/>}></Route> 
+        </Routes>
+      </Container>
+      <Footer />
     </Router>
   );
 }
