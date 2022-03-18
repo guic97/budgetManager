@@ -1,0 +1,10 @@
+.btn{
+  text-decoration: none;
+  color: white;
+  background-color: #222;
+  padding: .5em 1.5em;
+  transition: .5s;
+}
+.btn:hover{
+  color: #ffbb22;
+}

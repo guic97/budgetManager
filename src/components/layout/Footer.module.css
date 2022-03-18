@@ -4,30 +4,21 @@
   padding: 3em;
   text-align: center;
 }
-
 .social_list{
   display:flex;
   justify-content: center;
   list-style-type: none;
 }
-
-.social_list li{
-  margin: 1em;
+.social_list li a{
+   margin: 1em;
+  color: white;
 }
-
-.social_list li:hover{
+.copy_right span, .social_list li a:hover{
   color: #ffbb22;
 }
-
 .social_list svg{
   font-size: 1.5em;
-  cursor: pointer;
 }
-
 .copy_right{
   margin-top: 2em;
-}
-
-.copy_right span{
-  color: #ffbb22;
 }
