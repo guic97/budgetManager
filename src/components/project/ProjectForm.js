@@ -37,7 +37,7 @@ function ProjectForm({handleSubmit, projectData, btnText}) {
     }) 
   }
  
-  return(
+  return( // Error 1 in the Select handleOnChange
     <form onSubmit={submit} className={styles.form}>
         <Input name="name" text="Project name" type="text" placeholder="Put the project name" handleOnChange={handleChange}/>
         <Input name="budget" text="Project budget" type="number" placeholder="Put the total budget" handleOnChange={handleChange}/>
