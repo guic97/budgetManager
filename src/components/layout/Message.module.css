@@ -1,15 +1,15 @@
 .message{
   border: 1px solid #000;
   max-width: 100%;
-  padding: .5em;
+  padding: 1em;
   text-align: center;
   border-radius: 5px;
   margin: 0 auto;
 }
 .success{
   border-color: rgb(4, 177, 4);
-  color: rgb(3, 164, 3);
-  background-color: #fff;
+  color: #000;
+  background-color: rgb(173, 246, 162);
 }
 .error{
   border-color: red;
