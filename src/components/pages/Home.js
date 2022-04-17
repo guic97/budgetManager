@@ -8,7 +8,6 @@ function Home(){
       <h1>Welcome to <span>Costs</span></h1>
       <p>Start making your projects now!</p>
       <LinkButton to='/newproject' text="Criate project"/>
-
       <img src={image} alt="Costs" />
     </section>
   )
