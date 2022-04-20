@@ -1,19 +1,20 @@
 import styles from "./Project.module.css";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {parse, v4 as uuidv4} from "uuid";
+import { v4 as uuidv4} from "uuid";
 
 import Loading from "../layout/Loading";
 import Container from "../layout/Container";
 import ProjectForm from "../project/ProjectForm";
 import Message from "../layout/Message";
 import ServiceForm from "../service/ServiceForm";
-
+import ServiceCard from "../service/ServiceCard";
 
 function Project() {
   const {id} = useParams();
   
   const [project, setProject] = useState([]);
+  const [services, setServices] = useState([]);
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [showServiceForm, setShowServiceForm] = useState(false);
   const [message, setMessage] = useState();
@@ -29,6 +30,7 @@ function Project() {
     .then((resp)=>resp.json())
     .then((data)=>{
       setProject(data)
+      setServices(data.services)
     })
     .catch((err)=>console.log(err))
   }, [id])
@@ -36,21 +38,48 @@ function Project() {
   function toggleProjectForm(){
     setShowProjectForm(!showProjectForm);
   }
+
   function toggleServiceForm() {
     setShowServiceForm(!showServiceForm);
   }
+
+  function removeService(id, cost) {
+    setMessage("");
+    const servicesUpdated = project.services.filter((service)=>service.id !== id);
+    const projectUpdated = project;
+
+    projectUpdated.services = servicesUpdated;
+    projectUpdated.costs = parseFloat(projectUpdated.costs) - parseFloat(cost);
+   
+    fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+      method:"PATCH",
+      headers: {
+        "content-type":"application/json",
+      },
+      body: JSON.stringify(projectUpdated),
+    })
+    .then(resp => resp.json())
+    .then((data)=>{
+      setProject(projectUpdated);
+      setServices(servicesUpdated);
+      setMessage("Service removed!");
+      setType("success");
+    })
+    .catch((err)=>(console.log(err)));
+  }
+
   function editPost(project) {
-    setMessage('')
+    setMessage('');
 
     if(project.costs > project.budget){
-      setMessage("The cost value is bigger than budget's")
-      setType("error")
-      return false
+      setMessage("The cost value is bigger than budget's");
+      setType("error");
+      return false;
     }
     if(project.budget < 0){
-      setMessage("The budget value cannot be lower than zero")
-      setType("error")
-      return false
+      setMessage("The budget value cannot be lower than zero");
+      setType("error");
+      return false;
     }
     fetch(`http://localhost:5000/projects/${project.id}`, {
       method:"PATCH",
@@ -61,13 +90,14 @@ function Project() {
     })
     .then(resp => resp.json())
     .then((data)=>{
-      setProject(data)
-      setShowProjectForm(false)
-      setMessage("The changes were made successfully")
-      setType("success")
+      setProject(data);
+      setShowProjectForm(false);
+      setMessage("The changes were made successfully");
+      setType("success");
     })
-    .catch((err)=>(console.log(err)))
+    .catch((err)=>(console.log(err)));
   }
+
   function createService(project){
     setMessage('')
     const lastService = project.services[project.services.length -1]
@@ -93,7 +123,7 @@ function Project() {
     })
     .then(resp=>resp.json())
     .then((data)=>{
-      console.log(data);
+      setShowServiceForm(false)
     })
     .catch(err=>console.log(err))
   }
@@ -144,7 +174,18 @@ function Project() {
           </div>
           <h2>Services</h2>
           <Container customClass="start">
-            <p>Project services</p>
+            {services.length > 0 &&
+              services.map((services)=>(
+                <ServiceCard
+                  id={services.id}
+                  name={services.name}
+                  cost={services.cost}
+                  description={services.description}
+                  key={services.id}
+                  handleRemove={removeService}
+                />
+            ))}
+            {services.length === 0 && <p>No projects to show</p>}
           </Container>
         </Container>
       </div>

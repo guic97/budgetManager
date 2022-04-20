@@ -23,35 +23,6 @@
       "id": 9
     },
     {
-      "name": "Mauro",
-      "budget": "8000",
-      "category": {
-        "id": "3",
-        "name": "Planning"
-      },
-      "costs": 7500,
-      "services": [
-        {
-          "name": "First",
-          "cost": "500",
-          "description": "First",
-          "id": "5d06366b-f430-4336-8720-8ce27fc2d8a5"
-        },
-        {
-          "name": "Second",
-          "cost": "1000",
-          "description": "Second",
-          "id": "2db31f6e-62a6-4415-9ece-a03f09bcc9cd"
-        },
-        {
-          "name": "Third",
-          "cost": "6000",
-          "id": "fc753178-29d3-4a9b-9051-269a4b555e62"
-        }
-      ],
-      "id": 10
-    },
-    {
       "name": "Mônica",
       "budget": "10000",
       "category": {

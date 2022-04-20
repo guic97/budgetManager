@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
+  width: 100%;
 }
 .min_height{
   min-height: 75%;
