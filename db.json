@@ -1,39 +1,6 @@
 {
   "projects": [
     {
-      "name": "Guilherme",
-      "budget": "6000",
-      "category": {
-        "id": "1",
-        "name": "Development"
-      },
-      "costs": 0,
-      "services": [],
-      "id": 1
-    },
-    {
-      "name": "João",
-      "budget": "10000",
-      "category": {
-        "id": "5",
-        "name": "Infrastructure"
-      },
-      "costs": 0,
-      "services": [],
-      "id": 3
-    },
-    {
-      "name": "Maria",
-      "budget": "5000",
-      "category": {
-        "id": "3",
-        "name": "Planning"
-      },
-      "costs": 0,
-      "services": [],
-      "id": 4
-    },
-    {
       "name": "Bruna",
       "budget": "9000",
       "category": {
@@ -45,15 +12,79 @@
       "id": 5
     },
     {
-      "name": "Marcos",
-      "budget": "50000",
+      "budget": "4000",
+      "category": {
+        "id": "2",
+        "name": "Design"
+      },
+      "name": "Augusto",
+      "costs": 0,
+      "services": [],
+      "id": 9
+    },
+    {
+      "name": "Mauro",
+      "budget": "8000",
+      "category": {
+        "id": "3",
+        "name": "Planning"
+      },
+      "costs": 7500,
+      "services": [
+        {
+          "name": "First",
+          "cost": "500",
+          "description": "First",
+          "id": "5d06366b-f430-4336-8720-8ce27fc2d8a5"
+        },
+        {
+          "name": "Second",
+          "cost": "1000",
+          "description": "Second",
+          "id": "2db31f6e-62a6-4415-9ece-a03f09bcc9cd"
+        },
+        {
+          "name": "Third",
+          "cost": "6000",
+          "id": "fc753178-29d3-4a9b-9051-269a4b555e62"
+        }
+      ],
+      "id": 10
+    },
+    {
+      "name": "Mônica",
+      "budget": "10000",
       "category": {
         "id": "5",
         "name": "Infrastructure"
       },
       "costs": 0,
       "services": [],
-      "id": 6
+      "id": 12
+    },
+    {
+      "name": "Guilherme",
+      "budget": "5000",
+      "category": {
+        "id": "1",
+        "name": "Development"
+      },
+      "costs": 5000,
+      "services": [
+        {
+          "name": "First",
+          "cost": "4000",
+          "description": "First",
+          "id": "a5d5e604-5426-4f9f-aaa8-891cf15c0da1"
+        },
+        {
+          "name": "Second",
+          "cost": "1000",
+          "description": "Second",
+          "id": "4240e1df-e66d-42f5-a36e-fdece928e673"
+        }
+      ],
+      "id": 13
     }
   ],
   "categories": [

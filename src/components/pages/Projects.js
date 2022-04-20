@@ -13,13 +13,8 @@ function Projects() {
 
   const [projects, setProjects] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
-  const [projectMessage, setProjectMessage] = useState('');
-
-  const location = useLocation();
-  let message = '';
-  if (location.state) {
-    message = location.state.message; // ERROR 2
-  }
+  const [projectMessage, setProjectMessage] = useState();
+  const [type, setType] = useState();
 
   useEffect(()=>{
     fetch("http://localhost:5000/projects",
@@ -47,8 +42,9 @@ function Projects() {
       })
       .then((resp) => resp.json())
       .then(() => {
-        setProjects(projects.filter((project) => project.id != id))
+        setProjects(projects.filter((project) => project.id !== id))
         setProjectMessage("Project removed successfully!")
+        setType("success")
       })
       .catch(err => console.log(err))
   }
@@ -60,8 +56,7 @@ function Projects() {
           <h1>My projects</h1>
           <LinkButton to='/newproject' text="Criate project"/>
         </div>
-        {message && <Message type="success" msg={message} />}
-        {projectMessage && <Message type="success" msg={projectMessage} />}
+        {projectMessage && <Message type={type} msg={projectMessage} />}
         <Container customClass="start">
           {projects.length > 0 &&
             projects.map((project) => 
